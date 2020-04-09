@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Axios from 'axios';
+import Getdata from './Components/Getdata';
+import Getinput from './Components/Getinput';
+
 import './App.css';
 
-function App() {
+class App extends Component {
+  state={
+    confirmed:0,
+    recovered:0,
+    deaths:0,
+    country:''
+  }
+ componentDidMount(input){
+   this.getdata(input);
+ }
+ async getdata(input){
+   const res= await Axios.get(`https://covid19.mathdro.id/api/countries/${input}`);
+
+   this.setState({
+        confirmed:res.data.confirmed.value,
+        recovered:res.data.recovered.value,
+        deaths:res.data.deaths.value
+      });
+ }
+
+ inputHandler=(e)=>{
+  var input=e.target.value;
+  this.setState({
+   country:input
+  });
+
+   if(input===''){
+     input='china';
+   }
+   else{
+    this.componentDidMount(input)
+   }
+   
+ }
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Getinput handle={this.inputHandler}/>
+      <div className="country">showing stats of:{this.state.country}</div>
+    <Getdata 
+    conf={this.state.confirmed} recov={this.state.recovered} death={this.state.deaths} />
+
     </div>
   );
+}
 }
 
 export default App;

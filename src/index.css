@@ -11,3 +11,54 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.flexi{
+  margin: 50px 300px;
+  display: flex;
+}
+.cases{
+  margin-right: 20px;
+  border-radius: 20px;
+  height:300px;
+  width: 300px;
+  background-color: rgb(85, 85, 211);
+  color: white;
+}
+.recovered{
+  margin-right: 20px;
+  border-radius: 20px;
+  height:300px;
+  width: 300px;
+  background-color: rgb(17, 170, 43);
+  color: white;
+}
+.deaths{
+  margin-right: 20px;
+  border-radius: 20px;
+  height:300px;
+  width: 300px;
+  background-color: rgb(185, 14, 36);
+  color: white;
+  
+}
+p{
+  font-size: 40px;
+  font-weight: 700;
+}
+.inp{
+  background-color: white;
+  height: 18vh;
+  width: 100%;
+} 
+input{
+  width: 75%;
+  height: 30px;
+  border-radius: 8px;
+  margin-top: 50px;
+  outline: none;
+  border: 0;
+  border: 1px solid cornflowerblue;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: cornflowerblue;
+}
+
